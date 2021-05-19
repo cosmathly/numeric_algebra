@@ -12,6 +12,10 @@ const double e = 2.718281828459045; // 自然底数
 const double w = 0.5; // 松弛因子，低松弛迭代
 int m, n;
 int loop_cnt;
+double f(double var)
+{
+       return (1.0-a)*(1.0-pow(e, -1.0*var/epsilon))/(1.0-pow(e, -1.0/epsilon))+a*var;
+}
 void get_real_y()
 {
      for(int i = 1; i <= n; i++)
@@ -39,11 +43,6 @@ void get_data()
      }
      b[n] = a*h*h-epsilon-h;
 }
-double f(double var)
-{
-       return (1.0-a)*(1.0-pow(e, -1.0*var/epsilon))/(1.0-pow(e, -1.0/epsilon))+a*var;
-}
-
 void initial_cur_y()
 {
      for(int i = 1; i <= n; i++)
@@ -65,7 +64,7 @@ double calc_error()
 }
 void Jacobi()
 {
-     loop_cnt = 200000;
+     loop_cnt = 10000;
      initial_cur_y();
      double sum;
      while(loop_cnt>0)
@@ -86,7 +85,7 @@ void Jacobi()
 }
 void G_S()
 {
-     loop_cnt = 200000;
+     loop_cnt = 10000;
      initial_cur_y();
      double sum;
      while(loop_cnt>0)
@@ -105,7 +104,7 @@ void G_S()
 }
 void SOR()
 {
-     loop_cnt = 200000;
+     loop_cnt = 10000;
      initial_cur_y();
      double sum;
      while(loop_cnt>0)
